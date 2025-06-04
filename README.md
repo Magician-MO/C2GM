@@ -1,11 +1,9 @@
-![image](https://github.com/user-attachments/assets/f8f0b3fc-4901-4bb3-8e68-589bf0c79f37)
+![image](https://github.com/user-attachments/assets/b1c4745d-029b-4358-b517-e2a7b4445c22)
 
 # Bridging Scales in Map Generation: A scale-aware cascaded generative mapping framework for consistent multi-scale cartographic representation
 
 **Authors:** Chenxing Sun, Yongyang Xu, Xuwei Xu, Xixi Fan, Jing Bai, Xiechun Lu, and Zhanlong Chen.
 **Contact:** Zhanlong Chen (chenzl@cug.edu.cn)
-
-![image](https://github.com/user-attachments/assets/b1c4745d-029b-4358-b517-e2a7b4445c22)
 
 ## Overview
 
