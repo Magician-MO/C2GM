@@ -43,14 +43,6 @@ The framework comprises three core modules:
 * **MFEncoder:** Fuses semantic features from remote sensing imagery and cascading references.
 * **SFAdapter:** Aligns multi-scale features with the denoising trajectory.
 
-![Detailed SCGM architecture](resources/fig-method-model.png)
-
-*Figure 2: The SCGM architecture leverages a VAE to transition the diffusion and reverse processes from pixel space to latent space. During training, the latent representation of the target map, \(z_0\), undergoes a progressive transformation into \(z_t\) through the diffusion process, followed by denoising achieved via a U-Net network. Two bespoke modules are introduced to further refine the denoising process: MFEncoder and SFAdapter. The MFEncoder integrates information derived from remote sensing imagery and cascading references to construct the conditional feature, \(F_{\mathrm{cond}}\). Expanding on \(F_{\mathrm{cond}}\), the SFAdapter produces multi-scale features that are subsequently merged with the outputs of corresponding U-Net layers through element-wise addition.*
-
-![Detailed structure of MFEncoder and SFAdapter](resources/fig-method-blocks.png)
-
-*Figure 3: Detailed structure of the MFEncoder, SPADE module and basic blocks.*
-
 ## CSCMG Dataset
 
 We introduce the **C**ross-**S**cale **C**ascade **M**ap **G**eneration (CSCMG) dataset, comprising real-world remote sensing images and tile maps from Glasgow and London, UK. CSCMG pairs multi-scale tile maps (scales 1:35, 000 to 1:2, 000) with corresponding imagery and includes scale information (map scale, level, resolution, feature types).
@@ -75,11 +67,11 @@ We introduce the **C**ross-**S**cale **C**ascade **M**ap **G**eneration (CSCMG) 
 
 ![CSCMG Dataset Examples](resources/fig-dataset-example.png)
 
-*Figure 4: Examples of RS-Map tile sample pairs from scales 1:35, 000 to 1:2, 000 in the CSCMG dataset.*
+*Figure 2: Examples of RS-Map tile sample pairs from scales 1:35, 000 to 1:2, 000 in the CSCMG dataset.*
 
 ![CSCMG Cascade References](resources/fig-dataset-cascade.png)
 
-*Figure 5: Examples of cascade references from scales of 1:8, 000 to 1:2, 000 in the CSCMG dataset. The dataset provides 2X or 4X cascade references, with image resolutions of 128 and 64.*
+*Figure 3: Examples of cascade references from scales of 1:8, 000 to 1:2, 000 in the CSCMG dataset. The dataset provides 2X or 4X cascade references, with image resolutions of 128 and 64.*
 
 **Dataset Download:**
 The CSCMG dataset will be open-sourced in this repository.
@@ -93,7 +85,7 @@ SCGM demonstrates superior seamless tile synthesis and geographic detail preserv
 
 ![Qualitative Results](resources/fig-experiment-qualitative-all.png)
 
-*Figure 6: Generated results on the MLMG-US test set using SCGM and baseline methods, highlighting SCGM’s superior seamless tile synthesis and geographic detail preservation across scales.*
+*Figure 4: Generated results on the MLMG-US test set using SCGM and baseline methods, highlighting SCGM’s superior seamless tile synthesis and geographic detail preservation across scales.*
 
 ### Seamless Tile Map Generation
 
@@ -101,7 +93,7 @@ SCGM is capable of generating seamless, multi-scale, large-format, and virtually
 
 ![Seamless Map Generation](resources/fig-discussion-map.png)
 
-*Figure 7: Seamless tile map generation: SCGM demonstrates powerful capabilities on generating seamless, multi-scale, large-format, and virtually limitless tile maps.*
+*Figure 5: Seamless tile map generation: SCGM demonstrates powerful capabilities on generating seamless, multi-scale, large-format, and virtually limitless tile maps.*
 
 ### Ablation Studies Visuals
 
@@ -109,7 +101,7 @@ Incremental visual results showcase improvements with the addition of cascade re
 
 ![Ablation Study Results](resources/fig-experiment-ablation.png)
 
-*Figure 8: Incremental visual results showcasing seamless, high-quality tile map generation with the addition of cascade referencing (MFEncoder) and scale encoding (ScaleEncoder). The orange box highlights fine-grained map details contributed by cascade references, while the red box denotes enhanced scale representation from scale encoding.*
+*Figure 6: Incremental visual results showcasing seamless, high-quality tile map generation with the addition of cascade referencing (MFEncoder) and scale encoding (ScaleEncoder). The orange box highlights fine-grained map details contributed by cascade references, while the red box denotes enhanced scale representation from scale encoding.*
 
 ## Getting Started
 
