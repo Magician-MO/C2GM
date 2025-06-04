@@ -1,0 +1,46 @@
+data:
+  target: dataloader.data_module.BIRDataModule
+  params:
+    # Path to training set configuration file.
+    train_config: configs/datasetcfg/reference_map_train_single.yaml
+    # Path to validation set configuration file.
+    val_config: configs/datasetcfg/reference_map_val_single.yaml
+
+model:
+  # You can set learning rate in the following configuration file.
+  config: configs/modelcfg/refmap_single.yaml
+  # Path to the checkpoints or weights you want to resume. At the begining,
+  # this should be set to the initial weights created by scripts/make_stage2_init_weight.py.
+  resume: data/checkpoints/init_weight/init_weight-refmap-w-cascade.pt
+
+lightning:
+  seed: 231
+
+  trainer:
+    # Choose DEVICE for training: (gpu|ddp|tpu)
+    accelerator: ddp
+    precision: 32
+    # Indices of GPUs used for training.
+    gpus: [0,1]
+    # Path to save logs and checkpoints.
+    default_root_dir: data/exps/refmap-single-train-202408011640
+    # Max number of training steps (batches).
+    max_steps: 200000
+    # Validation frequency in terms of training steps.
+    val_check_interval: 500
+    log_every_n_steps: 50
+    # Accumulate gradients from multiple batches so as to increase batch size.
+    accumulate_grad_batches: 1
+    # auto_lr_find: true
+    sync_batchnorm: true
+    num_sanity_val_steps: 2
+
+  callbacks:
+    - target: model.callbacks.RichProgressBar
+    - target: model.callbacks.ModelCheckpoint
+      params:
+        every_n_train_steps: 500
+        monitor: 'val_lpips'
+        save_top_k: 1
+        mode: 'min'
+        filename: "{step}-{val_lpips:.3f}"

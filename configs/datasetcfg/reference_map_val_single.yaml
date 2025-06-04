@@ -1,0 +1,22 @@
+dataset:
+  target: dataloader.TMRef.TMRefDataset
+  params:
+    # Path to the file list.
+    dataroot: data/datasets/TMGN_1814/val
+    scale: 2
+    size: 256
+    split: "val"
+    data_len: 300
+    use_cascade: true
+    use_txt: true
+    txt_level: true
+    txt_feature: false
+
+data_loader:
+  batch_size: 20
+  shuffle: false
+  num_workers: 4
+  drop_last: false
+
+batch_transform:
+  target: dataloader.batch_transform.IdentityBatchTransform

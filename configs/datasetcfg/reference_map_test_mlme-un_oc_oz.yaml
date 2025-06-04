@@ -1,0 +1,25 @@
+dataset:
+  target: dataloader.TMRef.TMRefCascadeDataset
+  params:
+    # Path to the file list.
+    dataroot: data/datasets/MLMG/US_dataset_downsample_v2/sgdm
+    datalist: tilelist_18_16_2X_3L.csv
+    scale: 2
+    size: 256
+    split: "test"
+    data_len: -1
+    use_cascade: false
+    use_txt: true
+    txt_level: false
+    txt_feature: false
+    #cascade_path: data/test/refmap-level-test/samples
+    #style_path: none
+
+data_loader:
+  batch_size: 20
+  shuffle: false
+  num_workers: 4
+  drop_last: false
+
+batch_transform:
+  target: dataloader.batch_transform.IdentityBatchTransform
