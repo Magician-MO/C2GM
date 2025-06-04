@@ -1,0 +1,49 @@
+data:
+  target: dataloader.data_module.BIRDataModule
+  params:
+    # Path to test set configuration file.
+    test_config: configs/datasetcfg/reference_map_test_level_oc_wz.yaml
+
+model:
+  # You can set learning rate in the following configuration file.
+  config: configs/modelcfg/refmap_level_oc.yaml
+  # Path to the checkpoints or weights you want to resume. At the begining,
+  # this should be set to the initial weights created by scripts/make_stage2_init_weight.py.
+  # resume: data/checkpoints/init_weight/init_weight-refmap-o-cascade.pt
+  resume: data/checkpoints/process_weight/g1-l1-oc+wz-1102-t174500-p22.280.ckpt
+
+lightning:
+  seed: 231
+
+  trainer:
+    # Choose DEVICE for training: (gpu|ddp|tpu)
+    accelerator: gpu
+    precision: 32
+    # Indices of GPUs used for training.
+    gpus: [1]
+    # Path to save logs and checkpoints.
+    default_root_dir: data/test/refmap-level-test-cscmg-oc-oz
+    # Max number of training steps (batches).
+    max_steps: 200000
+    # Validation frequency in terms of training steps.
+    val_check_interval: 500
+    log_every_n_steps: 50
+    # Accumulate gradients from multiple batches so as to increase batch size.
+    accumulate_grad_batches: 1
+    #auto_lr_find: true
+    sync_batchnorm: true
+    num_sanity_val_steps: 2
+    # Reload Dataloader to introduced the result of the previous level
+    #reload_dataloaders_every_n_epochs: 1
+
+  callbacks:
+    - target: model.callbacks.RichProgressBar
+    - target: model.callbacks.ModelCheckpoint
+      params:
+        every_n_train_steps: 500
+        monitor: 'val/psnr'
+        save_top_k: 2
+        save_last: true
+        auto_insert_metric_name: false
+        mode: 'max'
+        filename: "checkpoint-step_{step}-psnr_{val/psnr:.3f}-ssim_{val/ssim:.3f}-fid_{val/fid:.3f}"

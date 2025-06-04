@@ -1,0 +1,25 @@
+dataset:
+  target: dataloader.TMRef.TMRefCascadeDataset
+  params:
+    # Path to the file list.
+    dataroot: data/datasets/TMGN_1814/train
+    datalist: tilelist_18_16.csv
+    split: "train"
+    size: 256
+    scale: 4
+    data_len: -1
+    use_cascade: true
+    use_txt: true
+    txt_level: true
+    txt_feature: false
+    #cascade_path: data/exps/refmap-level-train/samples
+    #style_path: none
+
+data_loader:
+  batch_size: 20
+  shuffle: true
+  num_workers: 4
+  drop_last: false
+
+batch_transform:
+  target: dataloader.batch_transform.IdentityBatchTransform
