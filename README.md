@@ -11,7 +11,7 @@ This repository contains the official implementation and the CSCMG dataset for t
 
 Multi-scale tile maps are essential for geographic information services. While existing image generation networks can produce map-like outputs from remote sensing imagery, they often emphasize texture replication over preserving geospatial features, limiting cartographic validity. Current approaches face challenges in integrating cartographic generalization principles with dynamic multi-scale generation and suffer from spatial discontinuities due to tile-wise generation.
 
-To address these limitations, we propose SCGM, a **S**cale-aware **C**artographic **G**enerative **M**apping framework that leverages conditional guided diffusion and a multi-scale cascade architecture. SCGM hierarchically constrains large-scale map synthesis with small-scale structural priors, effectively mitigating edge artifacts while maintaining geographic fidelity.
+To address these limitations, we propose **SCGM**, a **S**cale-aware **C**artographic **G**enerative **M**apping framework that leverages conditional guided diffusion and a multi-scale cascade architecture. SCGM hierarchically constrains large-scale map synthesis with small-scale structural priors, effectively mitigating edge artifacts while maintaining geographic fidelity.
 
 ## Key Innovations
 
