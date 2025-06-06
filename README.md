@@ -3,6 +3,7 @@
 # Bridging Scales in Map Generation: A scale-aware cascaded generative mapping framework for consistent multi-scale cartographic representation
 
 **Authors:** Chenxing Sun, Yongyang Xu, Xuwei Xu, Xixi Fan, Jing Bai, Xiechun Lu, and Zhanlong Chen.
+
 **Contact:** Zhanlong Chen (chenzl@cug.edu.cn)
 
 ## Overview
@@ -61,7 +62,8 @@ We introduce the **C**ross-**S**cale **C**ascade **M**ap **G**eneration (CSCMG) 
 | 17                                                      | 40555                       | 300                        | 1:4, 000  | 1.194                | block, park, addresses |
 | 18                                                      | 45000                       | 300                        | 1:2, 000  | 0.597                | some buildings, trees  |
 | All                                                     | 135571                      | 1471                       | -         | -                    | -                      |
-| *Table 1: Detailed information of the CSCMG dataset.* |                             |                            |           |                      |                        |
+
+*Table 1: Detailed information of the CSCMG dataset.*
 
 ![CSCMG Dataset Examples](resources/fig-dataset-example.png)
 
